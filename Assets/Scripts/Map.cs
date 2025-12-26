@@ -5,21 +5,28 @@ using System;
 namespace MapBuilder
 {
     [Serializable]
-    public class Map : MonoBehaviour
+    public class Map
     {
-        [SerializeField] private List<MapPiece> _pieces;
-        [SerializeField] private float _gridUnitSize;
+        [SerializeField] private float gridUnitSize;
+        [SerializeField] private List<MapPiece> pieces;
 
         public Map(float newGridUnitSize)
         {
-            _gridUnitSize = newGridUnitSize;
+            gridUnitSize = newGridUnitSize;
+        }
+
+        public Map(float newGridUnitSize, List<MapPiece> newMapPieces)
+        {
+            gridUnitSize = newGridUnitSize;
+            pieces = new List<MapPiece>();
+            pieces = newMapPieces;
         }
 
         public void Instantiate()
         {
-            foreach(MapPiece piece in _pieces)
+            foreach(MapPiece piece in pieces)
             {
-                piece.Instantiate(_gridUnitSize);
+                piece.Instantiate(gridUnitSize);
             }
         }
     }
