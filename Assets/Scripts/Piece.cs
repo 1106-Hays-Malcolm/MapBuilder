@@ -7,20 +7,13 @@ namespace MapBuilder
     [Serializable]
     public class Piece
     {
-        [SerializeField] private string prefabName;
-        [SerializeField] private List<Vector2Int> occupiedSpaces;
-        [SerializeField] private int orientation;
+        [SerializeField] private string _prefabName;
+        [SerializeField] private List<Vector2Int> _occupiedSpaces;
 
-        public Piece(string newPrefabName, List<Vector2Int> newOccupiedSpaces, int newOrientation)
+        public Piece(string newPrefabName, List<Vector2Int> newOccupiedSpaces)
         {
-            prefabName = newPrefabName;
-            occupiedSpaces = newOccupiedSpaces;
-            orientation = newOrientation;
-        }
-
-        public void Instantiate()
-        {
-            // Instantiate based on _prefabName
+            _prefabName = newPrefabName;
+            _occupiedSpaces = newOccupiedSpaces;
         }
     }
 }

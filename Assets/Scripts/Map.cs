@@ -21,13 +21,5 @@ namespace MapBuilder
             pieces = new List<MapPiece>();
             pieces = newMapPieces;
         }
-
-        public void Instantiate()
-        {
-            foreach(MapPiece piece in pieces)
-            {
-                piece.Instantiate(gridUnitSize);
-            }
-        }
     }
 }
