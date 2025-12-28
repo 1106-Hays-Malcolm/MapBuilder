@@ -7,19 +7,22 @@ namespace MapBuilder
     [Serializable]
     public class Map
     {
-        [SerializeField] private float gridUnitSize;
-        [SerializeField] private List<MapPiece> pieces;
+        [SerializeField] private float _gridUnitSize;
+        [SerializeField] private List<MapPiece> _pieces;
+
+        public float gridUnitSize { get => _gridUnitSize; }
+        public List<MapPiece> pieces { get => _pieces; }
 
         public Map(float newGridUnitSize)
         {
-            gridUnitSize = newGridUnitSize;
+            _gridUnitSize = newGridUnitSize;
         }
 
         public Map(float newGridUnitSize, List<MapPiece> newMapPieces)
         {
-            gridUnitSize = newGridUnitSize;
-            pieces = new List<MapPiece>();
-            pieces = newMapPieces;
+            _gridUnitSize = newGridUnitSize;
+            _pieces = new List<MapPiece>();
+            _pieces = newMapPieces;
         }
     }
 }
