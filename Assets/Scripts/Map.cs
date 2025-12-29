@@ -18,6 +18,11 @@ namespace MapBuilder
             _gridUnitSize = newGridUnitSize;
         }
 
+        public Map()
+        {
+
+        }
+
         public Map(float newGridUnitSize, List<MapPiece> newMapPieces)
         {
             _gridUnitSize = newGridUnitSize;

@@ -16,17 +16,17 @@ MonoBehaviour:
   m_GUID: 6a5fc9304a6f4c7c7b74975d2a278fc8
   m_SerializeEntries:
   - m_GUID: 0df1cee9f9d90aeecbddc5967738e956
-    m_Address: Assets/Prefabs/ceiling.prefab
+    m_Address: ceiling
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0ee89f0b9a4a3531eb2e9346285750da
-    m_Address: Assets/Prefabs/wall.prefab
+    m_Address: wall
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d483458d2cec246d7b2aa4c5622630f9
-    m_Address: Assets/Prefabs/floor.prefab
+    m_Address: floor
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

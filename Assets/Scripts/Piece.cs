@@ -10,6 +10,9 @@ namespace MapBuilder
         [SerializeField] private string _prefabName;
         [SerializeField] private List<Vector2Int> _occupiedSpaces;
 
+        public string prefabName { get => _prefabName; }
+        public List<Vector2Int> occupiedSpaces { get => _occupiedSpaces; }
+
         public Piece(string newPrefabName, List<Vector2Int> newOccupiedSpaces)
         {
             _prefabName = newPrefabName;
