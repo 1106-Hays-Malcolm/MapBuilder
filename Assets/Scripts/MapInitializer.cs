@@ -35,7 +35,7 @@ namespace MapBuilder
         {
             foreach (var mapPiece in map.pieces)
             {
-                Vector3 position = new Vector3(mapPiece.location.x * map.gridUnitSize, 0, mapPiece.location.y * map.gridUnitSize);
+                Vector3 position = new Vector3(mapPiece.location.x * map.gridUnitSize, mapPiece.location.y * map.gridUnitSize, mapPiece.location.z * map.gridUnitSize);
                 Quaternion rotation = new Quaternion();
                 rotation.eulerAngles = new Vector3(0, mapPiece.orientation * 90, 0);
 

@@ -4,7 +4,8 @@
         {
             "_location": {
                 "x": 0,
-                "y": 0
+                "y": 0,
+                "z": 0
             },
             "_orientation": 0,
             "_piece": {
@@ -12,7 +13,8 @@
                 "_occupiedSpaces": [
                     {
                         "x": 0,
-                        "y": 0
+                        "y": 0,
+                        "z": 0
                     }
                 ]
             }
@@ -20,7 +22,8 @@
         {
             "_location": {
                 "x": 0,
-                "y": 1
+                "y": 0,
+                "z": 1
             },
             "_orientation": 0,
             "_piece": {
@@ -28,71 +31,8 @@
                 "_occupiedSpaces": [
                     {
                         "x": 0,
-                        "y": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
-                "x": 0,
-                "y": 1
-            },
-            "_orientation": 2,
-            "_piece": {
-                "_prefabName": "wall",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
-                "x": 0,
-                "y": 0
-            },
-            "_orientation": 2,
-            "_piece": {
-                "_prefabName": "wall",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
-                "x": 0,
-                "y": 2
-            },
-            "_orientation": 2,
-            "_piece": {
-                "_prefabName": "wall",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
-                "x": 0,
-                "y": 2
-            },
-            "_orientation": 0,
-            "_piece": {
-                "_prefabName": "floor",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0
+                        "y": 0,
+                        "z": 0
                     }
                 ]
             }

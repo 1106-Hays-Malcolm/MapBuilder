@@ -7,6 +7,7 @@ namespace MapBuilder
     [Serializable]
     public class Map
     {
+        [SerializeField] private Vector3 _rootWorldPosition;
         [SerializeField] private float _gridUnitSize;
         [SerializeField] private List<MapPiece> _pieces;
 
