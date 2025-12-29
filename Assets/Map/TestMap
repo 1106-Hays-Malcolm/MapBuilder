@@ -1,5 +1,10 @@
 {
-    "_gridUnitSize": 6.4,
+    "_rootWorldPosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "_gridUnitSize": 6.400000095367432,
     "_pieces": [
         {
             "_location": {
