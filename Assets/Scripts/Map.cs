@@ -16,7 +16,8 @@ namespace MapBuilder
 
         public void AddMapPiece(MapPiece newMapPiece)
         {
-            _pieces.Add(newMapPiece);
+            MapPiece mapPieceCopy = new MapPiece(newMapPiece);
+            _pieces.Add(mapPieceCopy);
         }
 
         public Map(float newGridUnitSize)

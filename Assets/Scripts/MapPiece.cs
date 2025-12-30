@@ -21,6 +21,13 @@ namespace MapBuilder
             _orientation = newOrientation;
         }
 
+        public MapPiece(MapPiece otherPiece)
+        {
+            _location = new Vector3Int(otherPiece.location.x, otherPiece.location.y, otherPiece.location.z);
+            _piece = otherPiece.piece;
+            _orientation = otherPiece.orientation;
+        }
+
         public MapPiece()
         {
             _location = new Vector3Int();

@@ -69,6 +69,7 @@ namespace MapBuilder
                 if (MapEditorInputManager.Instance.placeAction.inProgress && !alreadyPlaced)
                 {
                     alreadyPlaced = true;
+                    Debug.Log(piece.location);
                     MapEditor.Instance.map.AddMapPiece(piece);
                     Instantiate(pieceObject);
                 }
