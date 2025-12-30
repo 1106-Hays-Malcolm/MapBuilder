@@ -10,6 +10,9 @@ namespace MapBuilder
 {
     public class MapEditor : MonoBehaviour
     {
+        private static MapEditor _instance;
+        public static MapEditor Instance { get { return _instance; } }
+
         private List<string> keys = new List<string> {
             "wall",
             "ceiling",
@@ -20,7 +23,13 @@ namespace MapBuilder
         private Dictionary<string, AsyncOperationHandle<GameObject>> operationDictionary;
         public UnityEvent Ready;
 
-        private bool assetsLoaded = false;
+        private bool _assetsLoaded = false;
+        public bool assetsLoaded { get { return _assetsLoaded; } }
+
+        void Awake()
+        {
+            _instance = this;
+        }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -30,13 +39,13 @@ namespace MapBuilder
 
         private void OnAssetsReady()
         {
-            assetsLoaded = true;
+            _assetsLoaded = true;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (assetsLoaded)
+            if (_assetsLoaded)
             {
 
             }

@@ -7,7 +7,9 @@ public class CreativePlayerCamera : MonoBehaviour
     [SerializeField] private float _maxLookAngle = 85f;
 
     private Camera _playerCamera;
-    private Vector3 _currentRotation = new Vector3();
+    private Vector3 _currentRotation;
+
+    public Vector3 currentRotation { get { return _currentRotation; } }
 
     void Awake()
     {

@@ -15,11 +15,11 @@ public class CreativePlayerMovement : MonoBehaviour
         
         if (MapEditorInputManager.Instance.upAction.inProgress)
         {
-            _velocity.y = _moveSpeed;
+            _velocity.y = speed;
         }
         else if (MapEditorInputManager.Instance.downAction.inProgress)
         {
-            _velocity.y = -_moveSpeed;
+            _velocity.y = -speed;
         }
 
         transform.position += _velocity * Time.deltaTime;
