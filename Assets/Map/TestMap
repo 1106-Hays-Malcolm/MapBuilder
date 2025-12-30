@@ -32,7 +32,7 @@
             },
             "_orientation": 0,
             "_piece": {
-                "_prefabName": "floor",
+                "_prefabName": "wall",
                 "_occupiedSpaces": [
                     {
                         "x": 0,

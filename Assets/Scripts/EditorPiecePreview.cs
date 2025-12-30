@@ -9,6 +9,7 @@ namespace MapBuilder
         GameObject pieceObject;
         bool pieceInstantiated = false;
 
+        [SerializeField] private float reachDistance = 10f;
         private float gridUnitSize = 6.4f;
 
         [SerializeField] private CreativePlayerCamera cameraScript;
@@ -18,7 +19,7 @@ namespace MapBuilder
             cameraScript = GetComponentInChildren<CreativePlayerCamera>();
         }
 
-        void LateUpdate()
+        void Update()
         {
             if (!MapEditor.Instance.assetsLoaded)
                 return;
@@ -32,8 +33,12 @@ namespace MapBuilder
 
             if (pieceInstantiated)
             {
-                Vector3 targetPosition = transform.position + (10f * cameraScript.playerCamera.transform.forward);
-                Vector3Int newGridPosition = new Vector3Int((int) (targetPosition.x / gridUnitSize), (int) (targetPosition.y / gridUnitSize), (int) (targetPosition.z / gridUnitSize));
+                Vector3 targetPosition = transform.position + (reachDistance * cameraScript.playerCamera.transform.forward);
+                Vector3Int newGridPosition = new Vector3Int(
+                        Mathf.RoundToInt(targetPosition.x / gridUnitSize),
+                        Mathf.RoundToInt(targetPosition.y / gridUnitSize),
+                        Mathf.RoundToInt(targetPosition.z / gridUnitSize));
+
                 pieceObject.transform.position = new Vector3(newGridPosition.x * gridUnitSize, newGridPosition.y * gridUnitSize, newGridPosition.z * gridUnitSize);
             }
         }

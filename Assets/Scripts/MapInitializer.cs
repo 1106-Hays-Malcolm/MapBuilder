@@ -17,13 +17,21 @@ namespace MapBuilder
         private Dictionary<string, MapPiece> mapPieceDictionary;
         public UnityEvent Ready;
 
-        public void Initialize(Map newMap)
+        private bool _editMode = false;
+
+        public void Initialize(Map newMap, bool editMode)
         {
+            _editMode = editMode;
             map = newMap;
             keys = GetAllMapPrefabNames();
             Debug.Log($"Num keys: {keys.Count}");
             mapPieceDictionary = GetMapPieceDictionary();
             StartCoroutine(LoadAndAssociateResultWithKey(keys));
+        }
+
+        public void Initialize(Map newMap)
+        {
+            this.Initialize(newMap, false);
         }
 
         void Start()
@@ -33,14 +41,32 @@ namespace MapBuilder
 
         private void OnAssetsReady()
         {
+            var op = Addressables.LoadAssetAsync<GameObject>("MapPieceCollider");
+            GameObject mapPieceColliderPrefab = op.WaitForCompletion();
+
             foreach (var mapPiece in map.pieces)
             {
                 Vector3 position = new Vector3(mapPiece.location.x * map.gridUnitSize, mapPiece.location.y * map.gridUnitSize, mapPiece.location.z * map.gridUnitSize);
                 Quaternion rotation = new Quaternion();
                 rotation.eulerAngles = new Vector3(0, mapPiece.orientation * 90, 0);
 
-                Instantiate(operationDictionary[mapPiece.piece.prefabName].Result, position, rotation);
+                GameObject newPiece = Instantiate(operationDictionary[mapPiece.piece.prefabName].Result, position, rotation);
+
+                if (_editMode)
+                {
+                    GameObject mapPieceCollider = Instantiate(mapPieceColliderPrefab);
+                    mapPieceCollider.transform.parent = newPiece.transform;
+
+                    mapPieceCollider.transform.position = new Vector3(
+                            newPiece.transform.position.x,
+                            newPiece.transform.position.y + map.gridUnitSize / 2,
+                            newPiece.transform.position.z);
+
+                    mapPieceCollider.GetComponent<BoxCollider>().size = new Vector3(map.gridUnitSize, map.gridUnitSize, map.gridUnitSize);
+                }
             }
+
+            Addressables.Release(op);
         }
     
 

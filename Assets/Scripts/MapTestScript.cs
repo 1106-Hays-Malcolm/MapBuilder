@@ -26,6 +26,6 @@ public class MapTestScript : MonoBehaviour
         Map mapFromFile = mapFileStorage.ReadMapFromFile("TestMap");
 
         MapInitializer mapInitializer = GetComponent<MapInitializer>();
-        mapInitializer.Initialize(mapFromFile);
+        mapInitializer.Initialize(mapFromFile, editMode:true);
     }
 }

@@ -217,7 +217,7 @@
                 {
                     "name": "",
                     "id": "bd163ca3-279a-4d55-8820-79d3f1997347",
-                    "path": "<Keyboard>/leftShift",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -228,10 +228,10 @@
                 {
                     "name": "",
                     "id": "65f07cca-e6d7-4264-ae30-ff05eb042216",
-                    "path": "<Keyboard>/ctrl",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
+                    "groups": ";Keyboard&Mouse;Touch",
                     "action": "Fast",
                     "isComposite": false,
                     "isPartOfComposite": false
