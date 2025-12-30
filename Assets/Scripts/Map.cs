@@ -14,6 +14,11 @@ namespace MapBuilder
         public float gridUnitSize { get => _gridUnitSize; }
         public List<MapPiece> pieces { get => _pieces; }
 
+        public void AddMapPiece(MapPiece newMapPiece)
+        {
+            _pieces.Add(newMapPiece);
+        }
+
         public Map(float newGridUnitSize)
         {
             _gridUnitSize = newGridUnitSize;
@@ -21,7 +26,9 @@ namespace MapBuilder
 
         public Map()
         {
-
+            _gridUnitSize = 0f;
+            _rootWorldPosition = new Vector3();
+            _pieces = new List<MapPiece>();
         }
 
         public Map(float newGridUnitSize, List<MapPiece> newMapPieces)
