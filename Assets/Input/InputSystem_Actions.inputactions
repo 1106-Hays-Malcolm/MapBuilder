@@ -34,15 +34,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Remove",
-                    "type": "Button",
-                    "id": "949cbb47-838e-4658-9243-ec9b40b7dcde",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Up",
                     "type": "Button",
                     "id": "239eb3ab-903b-437d-98d5-03caed864532",
@@ -234,17 +225,6 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Place",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "87df3e3c-0a8b-4bf8-9dca-4b2f2a283c84",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Remove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

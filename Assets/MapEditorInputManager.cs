@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace MapBuilder
 {
-    enum EditMode
+    public enum EditMode
     {
         remove,
         place,
@@ -14,6 +14,9 @@ namespace MapBuilder
     // A singleton class that gives a reference to the creative player input.
     public class MapEditorInputManager : MonoBehaviour
     {
+        private EditMode _editMode;
+        public EditMode editMode { get { return _editMode; } }
+
         private static MapEditorInputManager _instance;
         public static MapEditorInputManager Instance { get { return _instance; } }
 
@@ -29,7 +32,6 @@ namespace MapBuilder
         private InputAction _moveAction;
         private InputAction _lookAction;
         private InputAction _placeAction;
-        private InputAction _removeAction;
         private InputAction _upAction;
         private InputAction _downAction;
         private InputAction _fastAction;
@@ -42,7 +44,6 @@ namespace MapBuilder
         public InputAction moveAction { get { return _moveAction; } }
         public InputAction lookAction { get { return _lookAction; } }
         public InputAction placeAction { get { return _placeAction; } }
-        public InputAction removeAction { get { return _removeAction; } }
         public InputAction upAction { get { return _upAction; } }
         public InputAction downAction { get { return _downAction; } }
         public InputAction fastAction { get { return _fastAction; } }
@@ -67,7 +68,6 @@ namespace MapBuilder
             _moveAction = _playerInput.currentActionMap.FindAction("Move");
             _lookAction = _playerInput.currentActionMap.FindAction("Look");
             _placeAction = _playerInput.currentActionMap.FindAction("Place");
-            _removeAction = _playerInput.currentActionMap.FindAction("Remove");
             _upAction = _playerInput.currentActionMap.FindAction("Up");
             _downAction = _playerInput.currentActionMap.FindAction("Down");
             _fastAction = _playerInput.currentActionMap.FindAction("Fast");
@@ -90,6 +90,26 @@ namespace MapBuilder
             if (context.action == _lookAction)
             {
                 _lookDirection = lookAction.ReadValue<Vector2>();
+            }
+
+            if (context.action.inProgress)
+            {
+                if (context.action == _removeModeAction)
+                {
+                    _editMode = EditMode.remove;
+                }
+                else if (context.action == _placeModeAction)
+                {
+                    _editMode = EditMode.place;
+                }
+                else if (context.action == _floatingPlaceModeAction)
+                {
+                    _editMode = EditMode.floatingPlace;
+                }
+                else if (context.action == _stackModeAction)
+                {
+                    _editMode = EditMode.floatingPlace;
+                }
             }
         }
     }
