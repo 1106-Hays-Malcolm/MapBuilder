@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// A singleton class that gives a reference to the player input.
+// A singleton class that gives a reference to the creative player input.
 public class MapEditorInputManager : MonoBehaviour
 {
     private static MapEditorInputManager _instance;
@@ -23,6 +23,7 @@ public class MapEditorInputManager : MonoBehaviour
     private InputAction _upAction;
     private InputAction _downAction;
     private InputAction _fastAction;
+    private InputAction _rotateAction;
 
     public InputAction moveAction { get { return _moveAction; } }
     public InputAction lookAction { get { return _lookAction; } }
@@ -31,6 +32,7 @@ public class MapEditorInputManager : MonoBehaviour
     public InputAction upAction { get { return _upAction; } }
     public InputAction downAction { get { return _downAction; } }
     public InputAction fastAction { get { return _fastAction; } }
+    public InputAction rotateAction { get { return _rotateAction; } }
 
     private void Awake()
     {
@@ -51,6 +53,7 @@ public class MapEditorInputManager : MonoBehaviour
         _upAction = _playerInput.currentActionMap.FindAction("Up");
         _downAction = _playerInput.currentActionMap.FindAction("Down");
         _fastAction = _playerInput.currentActionMap.FindAction("Fast");
+        _rotateAction = _playerInput.currentActionMap.FindAction("Rotate");
 
         _playerInput.onActionTriggered += OnAction;
     }

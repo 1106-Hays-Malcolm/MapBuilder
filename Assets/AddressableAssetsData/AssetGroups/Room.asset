@@ -21,11 +21,10 @@ MonoBehaviour:
     m_SerializedLabels:
     - MapBuilder
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0ee89f0b9a4a3531eb2e9346285750da
+  - m_GUID: 81b04d505e3f230f3975fb01d20f5473
     m_Address: wall
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - MapBuilder
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bd06b1f8727489c519b98c7cfb197bc3
     m_Address: MapPieceCollider

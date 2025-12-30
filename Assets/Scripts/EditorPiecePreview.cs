@@ -14,6 +14,8 @@ namespace MapBuilder
 
         [SerializeField] private CreativePlayerCamera cameraScript;
         
+        private bool alreadyRotated = false;
+        
         void Awake()
         {
             cameraScript = GetComponentInChildren<CreativePlayerCamera>();
@@ -40,6 +42,19 @@ namespace MapBuilder
                         Mathf.RoundToInt(targetPosition.z / gridUnitSize));
 
                 pieceObject.transform.position = new Vector3(newGridPosition.x * gridUnitSize, newGridPosition.y * gridUnitSize, newGridPosition.z * gridUnitSize);
+            }
+
+            if (MapEditorInputManager.Instance.rotateAction.inProgress && alreadyRotated == false)
+            {
+                alreadyRotated = true;
+                Quaternion newRotation = new Quaternion();
+                newRotation.eulerAngles = new Vector3(0, piece.orientation * 90, 0);
+                pieceObject.transform.rotation = newRotation;
+
+            }
+            else if (!MapEditorInputManager.Instance.rotateAction.inProgress && alreadyRotated == true)
+            {
+                alreadyRotated = false;
             }
         }
     }
