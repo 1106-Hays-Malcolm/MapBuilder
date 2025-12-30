@@ -10,7 +10,7 @@ namespace MapBuilder
         bool pieceInstantiated = false;
 
         [SerializeField] private float reachDistance = 10f;
-        private float gridUnitSize = 6.4f;
+        private float gridUnitSize;
 
         [SerializeField] private CreativePlayerCamera cameraScript;
         

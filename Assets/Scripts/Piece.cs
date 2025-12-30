@@ -18,5 +18,17 @@ namespace MapBuilder
             _prefabName = newPrefabName;
             _occupiedSpaces = newOccupiedSpaces;
         }
+
+        public Piece(string newPrefabName)
+        {
+            _prefabName = newPrefabName;
+            _occupiedSpaces = new List<Vector3Int> { new Vector3Int(0, 0, 0), };
+        }
+
+        public Piece()
+        {
+            _prefabName = "default";
+            _occupiedSpaces = new List<Vector3Int> { new Vector3Int(0, 0, 0), };
+        }
     }
 }

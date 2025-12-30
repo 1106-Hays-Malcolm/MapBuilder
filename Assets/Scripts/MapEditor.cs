@@ -13,6 +13,9 @@ namespace MapBuilder
         private static MapEditor _instance;
         public static MapEditor Instance { get { return _instance; } }
 
+        private Map _map;
+        public Map map { get => _map; }
+
         private List<string> keys = new List<string> {
             "wall",
             "ceiling",
