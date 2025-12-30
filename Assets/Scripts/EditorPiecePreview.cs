@@ -34,8 +34,8 @@ namespace MapBuilder
 
             if (!pieceInstantiated)
             {
-                piecePrefab = MapEditor.Instance.mapPiecePrefabs["wall"];
-                piece = new MapPiece(new Vector3Int(0, 0, 0), new Piece("wall"), 0);
+                piecePrefab = MapEditor.Instance.mapPiecePrefabs["floor"];
+                piece = new MapPiece(new Vector3Int(0, 0, 0), new Piece("floor"), 0);
                 pieceObject = Instantiate(piecePrefab);
                 pieceInstantiated = true;
             }

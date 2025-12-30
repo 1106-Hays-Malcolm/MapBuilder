@@ -106,11 +106,7 @@ namespace MapBuilder
                 Addressables.Release(item.Value);
             }
             MapFileStorage mapFileStorage = new MapFileStorage();
-            // mapFileStorage.WriteMapToFile(_map, _mapName);
-            foreach(MapPiece p in map.pieces)
-            {
-                Debug.Log($"Position: {p.location}. Orientation: {p.orientation}. Name: {p.piece.prefabName}");
-            }
+            mapFileStorage.WriteMapToFile(_map, _mapName);
         }
     }
 }
