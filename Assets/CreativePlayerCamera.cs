@@ -10,6 +10,7 @@ public class CreativePlayerCamera : MonoBehaviour
     private Vector3 _currentRotation;
 
     public Vector3 currentRotation { get { return _currentRotation; } }
+    public Camera playerCamera { get { return _playerCamera; } }
 
     void Awake()
     {

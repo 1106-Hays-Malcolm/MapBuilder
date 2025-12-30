@@ -19,9 +19,11 @@ namespace MapBuilder
             "floor"
         };
 
-        private Dictionary<string, MapPiece> mapPieceDictionary;
         private Dictionary<string, AsyncOperationHandle<GameObject>> operationDictionary;
         public UnityEvent Ready;
+
+        private Dictionary<string, GameObject> _mapPiecePrefabs;
+        public Dictionary<string, GameObject> mapPiecePrefabs { get { return _mapPiecePrefabs; } }
 
         private bool _assetsLoaded = false;
         public bool assetsLoaded { get { return _assetsLoaded; } }
@@ -35,10 +37,17 @@ namespace MapBuilder
         void Start()
         {
             Ready.AddListener(OnAssetsReady);
+            StartCoroutine(LoadAndAssociateResultWithKey(keys));
         }
 
         private void OnAssetsReady()
         {
+            _mapPiecePrefabs = new Dictionary<string, GameObject>();
+            foreach (var op in operationDictionary)
+            {
+                Debug.Log($"Key: {op.Key}");
+                _mapPiecePrefabs[op.Key] = op.Value.Result;
+            }
             _assetsLoaded = true;
         }
 
