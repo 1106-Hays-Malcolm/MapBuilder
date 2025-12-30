@@ -9,6 +9,8 @@ namespace MapBuilder
         GameObject pieceObject;
         bool pieceInstantiated = false;
 
+        private float gridUnitSize = 6.4f;
+
         [SerializeField] private CreativePlayerCamera cameraScript;
         
         void Awake()
@@ -30,7 +32,9 @@ namespace MapBuilder
 
             if (pieceInstantiated)
             {
-                pieceObject.transform.position = transform.position + (10f * cameraScript.playerCamera.transform.forward);
+                Vector3 targetPosition = transform.position + (10f * cameraScript.playerCamera.transform.forward);
+                Vector3Int newGridPosition = new Vector3Int((int) (targetPosition.x / gridUnitSize), (int) (targetPosition.y / gridUnitSize), (int) (targetPosition.z / gridUnitSize));
+                pieceObject.transform.position = new Vector3(newGridPosition.x * gridUnitSize, newGridPosition.y * gridUnitSize, newGridPosition.z * gridUnitSize);
             }
         }
     }
