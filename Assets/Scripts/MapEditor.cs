@@ -13,6 +13,7 @@ namespace MapBuilder
         private static MapEditor _instance;
         public static MapEditor Instance { get { return _instance; } }
 
+        private string _mapName;
         private Map _map;
         public Map map { get => _map; }
 
@@ -45,6 +46,8 @@ namespace MapBuilder
 
         public void LoadMap(string mapName)
         {
+            _mapName = mapName;
+
             MapFileStorage mapFileStorage = new MapFileStorage();
             _map = mapFileStorage.ReadMapFromFile(mapName);
 
@@ -102,6 +105,8 @@ namespace MapBuilder
             foreach (var item in operationDictionary) {
                 Addressables.Release(item.Value);
             }
+            MapFileStorage mapFileStorage = new MapFileStorage();
+            mapFileStorage.WriteMapToFile(_map, _mapName);
         }
     }
 }

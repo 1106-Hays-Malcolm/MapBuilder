@@ -10,7 +10,7 @@ namespace MapBuilder
         bool pieceInstantiated = false;
 
         [SerializeField] private float reachDistance = 10f;
-        private float gridUnitSize = 6.4f;
+        private float gridUnitSize;
 
         [SerializeField] private CreativePlayerCamera cameraScript;
         
@@ -20,6 +20,11 @@ namespace MapBuilder
         void Awake()
         {
             cameraScript = GetComponentInChildren<CreativePlayerCamera>();
+        }
+
+        void Start()
+        {
+            gridUnitSize = MapEditor.Instance.map.gridUnitSize;
         }
 
         void Update()
@@ -45,31 +50,32 @@ namespace MapBuilder
 
                 piece.location = newGridPosition;
                 pieceObject.transform.position = new Vector3(newGridPosition.x * gridUnitSize, newGridPosition.y * gridUnitSize, newGridPosition.z * gridUnitSize);
-            }
+            
 
-            if (MapEditorInputManager.Instance.rotateAction.inProgress && alreadyRotated == false)
-            {
-                alreadyRotated = true;
-                piece.orientation++;
-                Quaternion newRotation = new Quaternion();
-                newRotation.eulerAngles = new Vector3(0, piece.orientation * 90, 0);
-                pieceObject.transform.rotation = newRotation;
+                if (MapEditorInputManager.Instance.rotateAction.inProgress && alreadyRotated == false)
+                {
+                    alreadyRotated = true;
+                    piece.orientation++;
+                    Quaternion newRotation = new Quaternion();
+                    newRotation.eulerAngles = new Vector3(0, piece.orientation * 90, 0);
+                    pieceObject.transform.rotation = newRotation;
 
-            }
-            else if (!MapEditorInputManager.Instance.rotateAction.inProgress && alreadyRotated == true)
-            {
-                alreadyRotated = false;
-            }
+                }
+                else if (!MapEditorInputManager.Instance.rotateAction.inProgress && alreadyRotated == true)
+                {
+                    alreadyRotated = false;
+                }
 
-            if (MapEditorInputManager.Instance.placeAction.inProgress && !alreadyPlaced)
-            {
-                alreadyPlaced = true;
-                MapEditor.Instance.map.AddMapPiece(piece);
-                Instantiate(pieceObject);
-            }
-            else if (!MapEditorInputManager.Instance.placeAction.inProgress && alreadyPlaced)
-            {
-                alreadyPlaced = false;
+                if (MapEditorInputManager.Instance.placeAction.inProgress && !alreadyPlaced)
+                {
+                    alreadyPlaced = true;
+                    MapEditor.Instance.map.AddMapPiece(piece);
+                    Instantiate(pieceObject);
+                }
+                else if (!MapEditorInputManager.Instance.placeAction.inProgress && alreadyPlaced)
+                {
+                    alreadyPlaced = false;
+                }
             }
         }
     }
