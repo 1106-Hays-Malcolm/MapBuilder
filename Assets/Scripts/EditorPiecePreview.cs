@@ -15,6 +15,7 @@ namespace MapBuilder
         [SerializeField] private CreativePlayerCamera cameraScript;
         
         private bool alreadyRotated = false;
+        private bool alreadyPlaced = false;
         
         void Awake()
         {
@@ -58,6 +59,17 @@ namespace MapBuilder
             else if (!MapEditorInputManager.Instance.rotateAction.inProgress && alreadyRotated == true)
             {
                 alreadyRotated = false;
+            }
+
+            if (MapEditorInputManager.Instance.placeAction.inProgress && !alreadyPlaced)
+            {
+                alreadyPlaced = true;
+                MapEditor.Instance.map.AddMapPiece(piece);
+                Instantiate(pieceObject);
+            }
+            else if (!MapEditorInputManager.Instance.placeAction.inProgress && alreadyPlaced)
+            {
+                alreadyPlaced = false;
             }
         }
     }
