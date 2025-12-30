@@ -20,12 +20,15 @@ public class MapTestScript : MonoBehaviour
 
         // Map testMap = new Map(6.4f, testMapPieces);
 
-        MapFileStorage mapFileStorage = new MapFileStorage();
+        // MapFileStorage mapFileStorage = new MapFileStorage();
         // mapFileStorage.WriteMapToFile(testMap, "TestMap");
 
-        Map mapFromFile = mapFileStorage.ReadMapFromFile("TestMap");
+        // Map mapFromFile = mapFileStorage.ReadMapFromFile("TestMap");
 
-        MapInitializer mapInitializer = GetComponent<MapInitializer>();
-        mapInitializer.Initialize(mapFromFile, editMode:true);
+        // MapInitializer mapInitializer = GetComponent<MapInitializer>();
+        // mapInitializer.Initialize(mapFromFile, editMode:true);
+        
+        MapEditor mapEditor = FindFirstObjectByType<MapEditor>();
+        mapEditor.LoadMap("TestMap");
     }
 }

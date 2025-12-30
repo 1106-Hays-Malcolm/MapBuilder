@@ -36,6 +36,9 @@ namespace MapBuilder
 
         void Start()
         {
+            if (Ready == null)
+                Ready = new UnityEvent();
+
             Ready.AddListener(OnAssetsReady);
         }
 

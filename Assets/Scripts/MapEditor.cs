@@ -43,6 +43,15 @@ namespace MapBuilder
             StartCoroutine(LoadAndAssociateResultWithKey(keys));
         }
 
+        public void LoadMap(string mapName)
+        {
+            MapFileStorage mapFileStorage = new MapFileStorage();
+            _map = mapFileStorage.ReadMapFromFile(mapName);
+
+            MapInitializer mapInitializer = gameObject.AddComponent<MapInitializer>();
+            mapInitializer.Initialize(_map, editMode:true);
+        }
+
         private void OnAssetsReady()
         {
             _mapPiecePrefabs = new Dictionary<string, GameObject>();
