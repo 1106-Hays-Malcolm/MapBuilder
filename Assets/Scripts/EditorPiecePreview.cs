@@ -9,7 +9,8 @@ namespace MapBuilder
         GameObject pieceObject;
         bool pieceInstantiated = false;
 
-        [SerializeField] private float reachDistance = 10f;
+        [SerializeField] private float floatingReachDistance = 10f;
+        [SerializeField] private float nonFloatingReachDistance = 100f;
         private float gridUnitSize;
 
         [SerializeField] private CreativePlayerCamera cameraScript;
@@ -40,14 +41,48 @@ namespace MapBuilder
                 pieceInstantiated = true;
             }
 
-            // GetPlaceGridPosition(100f, cameraScript.playerCamera.transform.forward, cameraScript.playerCamera.transform.position);
+            bool colliderHit;
+            Vector3Int gridTargetPosition;
+            float currentReachDistance = 0f;
+            bool stack = false;
+            bool hidePreview = false;
+            switch (MapEditorInputManager.Instance.editMode)
+            {
+                case (EditMode.place):
+                    currentReachDistance = nonFloatingReachDistance;
+                    stack = false;
+                    hidePreview = false;
+                    break;
+                case (EditMode.floatingPlace):
+                    currentReachDistance = floatingReachDistance;
+                    stack = false;
+                    hidePreview = false;
+                    break;
+                case (EditMode.stack):
+                    currentReachDistance = nonFloatingReachDistance;
+                    stack = true;
+                    hidePreview = false;
+                    break;
+                case (EditMode.remove):
+                    currentReachDistance = nonFloatingReachDistance;
+                    stack = true;
+                    hidePreview = true;
+                    break;
+            }
+            gridTargetPosition = GetTargetGridPosition(
+                    maxDistance:currentReachDistance,
+                    forward:cameraScript.playerCamera.transform.forward,
+                    origin:cameraScript.playerCamera.transform.position,
+                    stack:stack,
+                    out colliderHit);
 
-            Vector3 floatingTargetPosition = transform.position + (reachDistance * cameraScript.playerCamera.transform.forward);
-            // Vector3Int newGridPosition = GetGridPositionFromWorldPosition(floatingTargetPosition);
-            Vector3Int newGridPosition = GetTargetGridPosition(100f, reachDistance, cameraScript.playerCamera.transform.forward, cameraScript.playerCamera.transform.position);
-
-            piece.location = newGridPosition;
-            pieceObject.transform.position = new Vector3(newGridPosition.x * gridUnitSize, newGridPosition.y * gridUnitSize, newGridPosition.z * gridUnitSize);
+            if (!colliderHit && MapEditorInputManager.Instance.editMode == EditMode.place)
+            {
+                hidePreview = true;
+            }
+            pieceObject.SetActive(!hidePreview);
+            piece.location = gridTargetPosition;
+            pieceObject.transform.position = WorldPositionFromGridPosition(gridTargetPosition);
         
 
             if (MapEditorInputManager.Instance.rotateAction.inProgress && alreadyRotated == false)
@@ -90,7 +125,7 @@ namespace MapBuilder
             newCollider.GetComponent<BoxCollider>().size = new Vector3(gridUnitSize, gridUnitSize, gridUnitSize);
         }
 
-        private Vector3Int GetTargetGridPosition(float maxHitDisance, float maxFloatingDistance, Vector3 forward, Vector3 origin)
+        private Vector3Int GetTargetGridPosition(float maxHitDisance, float maxFloatingDistance, Vector3 forward, Vector3 origin, bool stack, out bool didHit)
         {
             RaycastHit hit;
             Vector3Int normal;
@@ -102,12 +137,26 @@ namespace MapBuilder
                 normal = new Vector3Int(Mathf.RoundToInt(hit.normal.x), Mathf.RoundToInt(hit.normal.y), Mathf.RoundToInt(hit.normal.z));
                 Vector3 positionHit = hit.transform.parent.transform.position;
                 gridPositionHit = GetGridPositionFromWorldPosition(positionHit);
-                return gridPositionHit + normal;
+
+                didHit = true;
+                return stack ? gridPositionHit : gridPositionHit + normal;
             }
             else
             {
+                didHit = false;
                 return GetGridPositionFromWorldPosition(origin + (maxFloatingDistance * forward));
             }
+        }
+
+        private Vector3Int GetTargetGridPosition(float maxDistance, Vector3 forward, Vector3 origin, bool stack, out bool didHit)
+        {
+            return GetTargetGridPosition(maxDistance, maxDistance, forward, origin, stack, out didHit);
+        }
+
+        private Vector3Int GetTargetGridPosition(float maxHitDisance, float maxFloatingDistance, Vector3 forward, Vector3 origin, bool stack)
+        {
+            bool dummy;
+            return GetTargetGridPosition(maxHitDisance, maxFloatingDistance, forward, origin, stack, out dummy);
         }
 
         private Vector3Int GetGridPositionFromWorldPosition(Vector3 position)
@@ -116,6 +165,11 @@ namespace MapBuilder
                     Mathf.RoundToInt (position.x / gridUnitSize),
                     Mathf.RoundToInt (position.y / gridUnitSize),
                     Mathf.RoundToInt (position.z / gridUnitSize));
+        }
+
+        private Vector3 WorldPositionFromGridPosition(Vector3Int gridPosition)
+        {
+            return new Vector3(gridPosition.x * gridUnitSize, gridPosition.y * gridUnitSize, gridPosition.z * gridUnitSize);
         }
     }
 }
