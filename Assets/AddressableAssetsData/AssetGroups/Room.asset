@@ -34,8 +34,7 @@ MonoBehaviour:
   - m_GUID: d483458d2cec246d7b2aa4c5622630f9
     m_Address: floor
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - MapBuilder
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: c3227aef10ed7c3beb49c7c9999e70a7, type: 2}
