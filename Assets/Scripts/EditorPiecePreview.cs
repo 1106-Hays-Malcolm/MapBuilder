@@ -67,22 +67,27 @@ namespace MapBuilder
             if (MapEditorInputManager.Instance.placeAction.inProgress && !alreadyPlaced)
             {
                 alreadyPlaced = true;
-                Debug.Log(piece.location);
-                MapEditor.Instance.map.AddMapPiece(piece);
-                GameObject newPieceObject = Instantiate(pieceObject);
-                GameObject newCollider = Instantiate(MapEditor.Instance.mapPieceColliderPrefab);
-                newCollider.transform.parent = newPieceObject.transform;
-                newCollider.transform.position = new Vector3(
-                        pieceObject.transform.position.x,
-                        pieceObject.transform.position.y + gridUnitSize/2,
-                        pieceObject.transform.position.z);
-
-                newCollider.GetComponent<BoxCollider>().size = new Vector3(gridUnitSize, gridUnitSize, gridUnitSize);
+                AddPiece(piece, pieceObject);
             }
             else if (!MapEditorInputManager.Instance.placeAction.inProgress && alreadyPlaced)
             {
                 alreadyPlaced = false;
             }
+        }
+
+        private void AddPiece(MapPiece mapPiece, GameObject pieceObject)
+        {
+            MapEditor.Instance.map.AddMapPiece(piece);
+            GameObject newPieceObject = Instantiate(pieceObject);
+
+            GameObject newCollider = new GameObject("Collider");
+            newCollider.AddComponent<BoxCollider>();
+            newCollider.transform.parent = newPieceObject.transform;
+            newCollider.transform.position = new Vector3(
+                    pieceObject.transform.position.x,
+                    pieceObject.transform.position.y + gridUnitSize/2,
+                    pieceObject.transform.position.z);
+            newCollider.GetComponent<BoxCollider>().size = new Vector3(gridUnitSize, gridUnitSize, gridUnitSize);
         }
 
         private Vector3Int GetTargetGridPosition(float maxHitDisance, float maxFloatingDistance, Vector3 forward, Vector3 origin)
