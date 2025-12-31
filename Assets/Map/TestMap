@@ -15575,6 +15575,24 @@
                     }
                 ]
             }
+        },
+        {
+            "_location": {
+                "x": -16,
+                "y": 10,
+                "z": -4
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
         }
     ]
 }

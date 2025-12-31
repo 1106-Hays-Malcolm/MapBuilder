@@ -19,8 +19,13 @@ namespace MapBuilder
 
         private bool _editMode = false;
 
+        private System.Diagnostics.Stopwatch addressablesLoadStopwatch;
+        private System.Diagnostics.Stopwatch mapLoadStopwatch;
+
         public void Initialize(Map newMap, bool editMode)
         {
+            mapLoadStopwatch = System.Diagnostics.Stopwatch.StartNew();
+
             _editMode = editMode;
             map = newMap;
             keys = GetAllMapPrefabNames();
@@ -70,11 +75,16 @@ namespace MapBuilder
             }
 
             Addressables.Release(op);
+
+            mapLoadStopwatch.Stop();
+            Debug.Log($"Total map loading time: {mapLoadStopwatch.ElapsedMilliseconds}ms");
         }
     
 
         // From: https://docs.unity3d.com/Packages/com.unity.addressables@1.19/manual/LoadingAddressableAssets.html#correlating-loaded-assets-to-their-keys
         IEnumerator LoadAndAssociateResultWithKey(IList<string> keys) {
+            addressablesLoadStopwatch = System.Diagnostics.Stopwatch.StartNew();
+
             if (operationDictionary == null)
                 operationDictionary = new Dictionary<string, AsyncOperationHandle<GameObject>>();
 
@@ -95,6 +105,8 @@ namespace MapBuilder
 
             yield return Addressables.ResourceManager.CreateGenericGroupOperation(loadOps, true);
 
+            addressablesLoadStopwatch.Stop();
+            Debug.Log($"Addressables load time: {addressablesLoadStopwatch.ElapsedMilliseconds}ms");
             Ready.Invoke();
         }
 
