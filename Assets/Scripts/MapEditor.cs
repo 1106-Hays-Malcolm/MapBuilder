@@ -29,6 +29,9 @@ namespace MapBuilder
         private Dictionary<string, GameObject> _mapPiecePrefabs;
         public Dictionary<string, GameObject> mapPiecePrefabs { get { return _mapPiecePrefabs; } }
 
+        private GameObject _mapPieceColliderPrefab;
+        public GameObject mapPieceColliderPrefab { get => _mapPieceColliderPrefab; }
+
         private bool _assetsLoaded = false;
         public bool assetsLoaded { get { return _assetsLoaded; } }
 
@@ -63,6 +66,10 @@ namespace MapBuilder
                 Debug.Log($"Key: {op.Key}");
                 _mapPiecePrefabs[op.Key] = op.Value.Result;
             }
+
+            var colliderOp = Addressables.LoadAssetAsync<GameObject>("MapPieceCollider");
+            _mapPieceColliderPrefab = colliderOp.WaitForCompletion();
+            Addressables.Release(colliderOp);
             _assetsLoaded = true;
         }
 

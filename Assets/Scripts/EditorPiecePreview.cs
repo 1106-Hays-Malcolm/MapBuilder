@@ -44,7 +44,7 @@ namespace MapBuilder
 
             Vector3 floatingTargetPosition = transform.position + (reachDistance * cameraScript.playerCamera.transform.forward);
             // Vector3Int newGridPosition = GetGridPositionFromWorldPosition(floatingTargetPosition);
-            Vector3Int newGridPosition = GetPlaceGridPosition(100f, reachDistance, cameraScript.playerCamera.transform.forward, cameraScript.playerCamera.transform.position);
+            Vector3Int newGridPosition = GetTargetGridPosition(100f, reachDistance, cameraScript.playerCamera.transform.forward, cameraScript.playerCamera.transform.position);
 
             piece.location = newGridPosition;
             pieceObject.transform.position = new Vector3(newGridPosition.x * gridUnitSize, newGridPosition.y * gridUnitSize, newGridPosition.z * gridUnitSize);
@@ -69,7 +69,15 @@ namespace MapBuilder
                 alreadyPlaced = true;
                 Debug.Log(piece.location);
                 MapEditor.Instance.map.AddMapPiece(piece);
-                Instantiate(pieceObject);
+                GameObject newPieceObject = Instantiate(pieceObject);
+                GameObject newCollider = Instantiate(MapEditor.Instance.mapPieceColliderPrefab);
+                newCollider.transform.parent = newPieceObject.transform;
+                newCollider.transform.position = new Vector3(
+                        pieceObject.transform.position.x,
+                        pieceObject.transform.position.y + gridUnitSize/2,
+                        pieceObject.transform.position.z);
+
+                newCollider.GetComponent<BoxCollider>().size = new Vector3(gridUnitSize, gridUnitSize, gridUnitSize);
             }
             else if (!MapEditorInputManager.Instance.placeAction.inProgress && alreadyPlaced)
             {
@@ -77,7 +85,7 @@ namespace MapBuilder
             }
         }
 
-        private Vector3Int GetPlaceGridPosition(float maxHitDisance, float maxFloatingDistance, Vector3 forward, Vector3 origin)
+        private Vector3Int GetTargetGridPosition(float maxHitDisance, float maxFloatingDistance, Vector3 forward, Vector3 origin)
         {
             RaycastHit hit;
             Vector3Int normal;
@@ -85,10 +93,10 @@ namespace MapBuilder
 
             if (Physics.Raycast(origin, forward, out hit, maxHitDisance))
             {
+                Debug.DrawRay(origin, forward * hit.distance, Color.red);
                 normal = new Vector3Int(Mathf.RoundToInt(hit.normal.x), Mathf.RoundToInt(hit.normal.y), Mathf.RoundToInt(hit.normal.z));
-                Vector3 positionHit = hit.collider.transform.position;
+                Vector3 positionHit = hit.transform.parent.transform.position;
                 gridPositionHit = GetGridPositionFromWorldPosition(positionHit);
-                gridPositionHit.y--;
                 return gridPositionHit + normal;
             }
             else
@@ -100,9 +108,9 @@ namespace MapBuilder
         private Vector3Int GetGridPositionFromWorldPosition(Vector3 position)
         {
             return new Vector3Int(
-                    Mathf.RoundToInt(position.x / gridUnitSize),
-                    Mathf.RoundToInt(position.y / gridUnitSize),
-                    Mathf.RoundToInt(position.z / gridUnitSize));
+                    Mathf.RoundToInt (position.x / gridUnitSize),
+                    Mathf.RoundToInt (position.y / gridUnitSize),
+                    Mathf.RoundToInt (position.z / gridUnitSize));
         }
     }
 }
