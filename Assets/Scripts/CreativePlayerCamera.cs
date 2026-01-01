@@ -21,6 +21,9 @@ namespace MapBuilder
 
         void LateUpdate()
         {
+            if (MapEditorInputManager.Instance.menuOpen)
+                return;
+
             Vector2 mouseDelta = Vector2.zero;
             mouseDelta = MapEditorInputManager.Instance.lookDirection;
             mouseDelta *= _lookSensitivity;

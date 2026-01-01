@@ -17,11 +17,12 @@ namespace MapBuilder
         private Map _map;
         public Map map { get => _map; }
 
-        private List<string> keys = new List<string> {
+        private List<string> _keys = new List<string> {
             "wall",
             "ceiling",
             "floor"
         };
+        public List<string> keys { get { return _keys; } }
 
         private Dictionary<string, AsyncOperationHandle<GameObject>> operationDictionary;
         public UnityEvent Ready;
@@ -44,7 +45,7 @@ namespace MapBuilder
         void Start()
         {
             Ready.AddListener(OnAssetsReady);
-            StartCoroutine(LoadAndAssociateResultWithKey(keys));
+            StartCoroutine(LoadAndAssociateResultWithKey(_keys));
         }
 
         public void LoadMap(string mapName)

@@ -19,6 +19,11 @@ namespace MapBuilder
         private bool alreadyPlaced = false;
 
         private GameObject targetedPieceObject;
+
+        private string _prefabName;
+        private bool _prefabNameSet;
+
+        public string prefabName { get => _prefabName; set { _prefabName = value; _prefabNameSet = true; pieceInstantiated = false; } }
         
         void Awake()
         {
@@ -35,13 +40,22 @@ namespace MapBuilder
             if (!MapEditor.Instance.assetsLoaded)
                 return;
 
+            if (!_prefabNameSet)
+                return;
+
             if (!pieceInstantiated)
             {
-                piecePrefab = MapEditor.Instance.mapPiecePrefabs["floor"];
-                piece = new MapPiece(new Vector3Int(0, 0, 0), new Piece("floor"), 0);
+                if (pieceObject is not null)
+                    Destroy(pieceObject);
+
+                piecePrefab = MapEditor.Instance.mapPiecePrefabs[_prefabName];
+                piece = new MapPiece(new Vector3Int(0, 0, 0), new Piece(_prefabName), 0);
                 pieceObject = Instantiate(piecePrefab);
                 pieceInstantiated = true;
             }
+
+            if (MapEditorInputManager.Instance.menuOpen)
+                return;
 
             if (targetedPieceObject is not null)
                 targetedPieceObject.SetActive(true);

@@ -14,6 +14,9 @@ namespace MapBuilder
     // A singleton class that gives a reference to the creative player input.
     public class MapEditorInputManager : MonoBehaviour
     {
+        private bool _menuOpen = false;
+        public bool menuOpen { get { return _menuOpen; } }
+
         private EditMode _editMode;
         public EditMode editMode { get { return _editMode; } }
 
@@ -85,6 +88,14 @@ namespace MapBuilder
 
         private void OnAction(InputAction.CallbackContext context)
         {
+            if (context.action == _menuAction)
+            {
+                if (context.started)
+                {
+                    _menuOpen = !_menuOpen;
+                }
+            }
+
             if (context.action == _moveAction)
             {
                 _moveDirection = moveAction.ReadValue<Vector2>();
