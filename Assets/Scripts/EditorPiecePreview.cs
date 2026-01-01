@@ -111,7 +111,14 @@ namespace MapBuilder
             if (MapEditorInputManager.Instance.placeAction.inProgress && !alreadyPlaced)
             {
                 alreadyPlaced = true;
-                AddPiece(piece, pieceObject);
+                if (canPlacePiece)
+                {
+                    AddPiece(piece, pieceObject);
+                }
+                else if (canRemovePiece)
+                {
+                    MapEditor.Instance.map.DeleteMapPieceByLocation(gridTargetPosition);
+                }
             }
             else if (!MapEditorInputManager.Instance.placeAction.inProgress && alreadyPlaced)
             {

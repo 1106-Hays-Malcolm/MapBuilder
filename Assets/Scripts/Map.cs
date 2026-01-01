@@ -27,6 +27,7 @@ namespace MapBuilder
                 if (mapPiece.location == location)
                 {
                     _pieces.Remove(mapPiece);
+                    return;
                 }
             }
         }
