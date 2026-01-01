@@ -17,6 +17,8 @@ namespace MapBuilder
         
         private bool alreadyRotated = false;
         private bool alreadyPlaced = false;
+
+        private GameObject targetedPieceObject;
         
         void Awake()
         {
@@ -40,6 +42,9 @@ namespace MapBuilder
                 pieceObject = Instantiate(piecePrefab);
                 pieceInstantiated = true;
             }
+
+            if (targetedPieceObject is not null)
+                targetedPieceObject.SetActive(true);
 
             bool colliderHit;
             Vector3Int gridTargetPosition;
@@ -83,12 +88,19 @@ namespace MapBuilder
                     forward:cameraScript.playerCamera.transform.forward,
                     origin:cameraScript.playerCamera.transform.position,
                     stack:stack,
-                    out colliderHit);
+                    out colliderHit,
+                    out targetedPieceObject);
 
             if (!colliderHit && MapEditorInputManager.Instance.editMode == EditMode.place)
             {
                 hidePreview = true;
             }
+
+            if (canRemovePiece && colliderHit)
+            {
+                targetedPieceObject.SetActive(false);
+            }
+
             pieceObject.SetActive(!hidePreview);
             piece.location = gridTargetPosition;
             pieceObject.transform.position = WorldPositionFromGridPosition(gridTargetPosition);
@@ -118,6 +130,8 @@ namespace MapBuilder
                 else if (canRemovePiece)
                 {
                     MapEditor.Instance.map.DeleteMapPieceByLocation(gridTargetPosition);
+                    Destroy(targetedPieceObject);
+                    targetedPieceObject = null;
                 }
             }
             else if (!MapEditorInputManager.Instance.placeAction.inProgress && alreadyPlaced)
@@ -141,7 +155,7 @@ namespace MapBuilder
             newCollider.GetComponent<BoxCollider>().size = new Vector3(gridUnitSize, gridUnitSize, gridUnitSize);
         }
 
-        private Vector3Int GetTargetGridPosition(float maxHitDisance, float maxFloatingDistance, Vector3 forward, Vector3 origin, bool stack, out bool didHit)
+        private Vector3Int GetTargetGridPosition(float maxHitDisance, float maxFloatingDistance, Vector3 forward, Vector3 origin, bool stack, out bool didHit, out GameObject hitObject)
         {
             RaycastHit hit;
             Vector3Int normal;
@@ -155,24 +169,33 @@ namespace MapBuilder
                 gridPositionHit = GetGridPositionFromWorldPosition(positionHit);
 
                 didHit = true;
+                hitObject = hit.transform.parent.gameObject;
                 return stack ? gridPositionHit : gridPositionHit + normal;
             }
             else
             {
                 didHit = false;
+                hitObject = null;
                 return GetGridPositionFromWorldPosition(origin + (maxFloatingDistance * forward));
             }
         }
 
+        private Vector3Int GetTargetGridPosition(float maxDistance, Vector3 forward, Vector3 origin, bool stack, out bool didHit, out GameObject hitObject)
+        {
+            return GetTargetGridPosition(maxDistance, maxDistance, forward, origin, stack, out didHit, out hitObject);
+        }
+
         private Vector3Int GetTargetGridPosition(float maxDistance, Vector3 forward, Vector3 origin, bool stack, out bool didHit)
         {
-            return GetTargetGridPosition(maxDistance, maxDistance, forward, origin, stack, out didHit);
+            GameObject dummy;
+            return GetTargetGridPosition(maxDistance, maxDistance, forward, origin, stack, out didHit, out dummy);
         }
 
         private Vector3Int GetTargetGridPosition(float maxHitDisance, float maxFloatingDistance, Vector3 forward, Vector3 origin, bool stack)
         {
-            bool dummy;
-            return GetTargetGridPosition(maxHitDisance, maxFloatingDistance, forward, origin, stack, out dummy);
+            bool dummy1;
+            GameObject dummy2;
+            return GetTargetGridPosition(maxHitDisance, maxFloatingDistance, forward, origin, stack, out dummy1, out dummy2);
         }
 
         private Vector3Int GetGridPositionFromWorldPosition(Vector3 position)
