@@ -46,27 +46,36 @@ namespace MapBuilder
             float currentReachDistance = 0f;
             bool stack = false;
             bool hidePreview = false;
+            bool canPlacePiece = false;
+            bool canRemovePiece = false;
             switch (MapEditorInputManager.Instance.editMode)
             {
                 case (EditMode.place):
                     currentReachDistance = nonFloatingReachDistance;
                     stack = false;
                     hidePreview = false;
+                    canPlacePiece = true;
                     break;
+
                 case (EditMode.floatingPlace):
                     currentReachDistance = floatingReachDistance;
                     stack = false;
                     hidePreview = false;
+                    canPlacePiece = true;
                     break;
+
                 case (EditMode.stack):
                     currentReachDistance = nonFloatingReachDistance;
                     stack = true;
                     hidePreview = false;
+                    canPlacePiece = true;
                     break;
+
                 case (EditMode.remove):
                     currentReachDistance = nonFloatingReachDistance;
                     stack = true;
                     hidePreview = true;
+                    canRemovePiece = true;
                     break;
             }
             gridTargetPosition = GetTargetGridPosition(

@@ -20,6 +20,17 @@ namespace MapBuilder
             _pieces.Add(mapPieceCopy);
         }
 
+        public void DeleteMapPieceByLocation(Vector3Int location)
+        {
+            foreach(MapPiece mapPiece in _pieces)
+            {
+                if (mapPiece.location == location)
+                {
+                    _pieces.Remove(mapPiece);
+                }
+            }
+        }
+
         public Map(float newGridUnitSize)
         {
             _gridUnitSize = newGridUnitSize;
