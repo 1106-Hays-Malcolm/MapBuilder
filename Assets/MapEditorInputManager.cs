@@ -108,7 +108,7 @@ namespace MapBuilder
                 }
                 else if (context.action == _stackModeAction)
                 {
-                    _editMode = EditMode.floatingPlace;
+                    _editMode = EditMode.stack;
                 }
             }
         }

@@ -53,6 +53,7 @@ namespace MapBuilder
             bool hidePreview = false;
             bool canPlacePiece = false;
             bool canRemovePiece = false;
+            bool hidePreviewOnMiss = false;
             switch (MapEditorInputManager.Instance.editMode)
             {
                 case (EditMode.place):
@@ -60,6 +61,7 @@ namespace MapBuilder
                     stack = false;
                     hidePreview = false;
                     canPlacePiece = true;
+                    hidePreviewOnMiss = true;
                     break;
 
                 case (EditMode.floatingPlace):
@@ -74,6 +76,7 @@ namespace MapBuilder
                     stack = true;
                     hidePreview = false;
                     canPlacePiece = true;
+                    hidePreviewOnMiss = true;
                     break;
 
                 case (EditMode.remove):
@@ -91,7 +94,7 @@ namespace MapBuilder
                     out colliderHit,
                     out targetedPieceObject);
 
-            if (!colliderHit && MapEditorInputManager.Instance.editMode == EditMode.place)
+            if (!colliderHit && hidePreviewOnMiss)
             {
                 hidePreview = true;
             }
