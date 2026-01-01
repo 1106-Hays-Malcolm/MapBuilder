@@ -1,19 +1,29 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace MapBuilder
 {
     public class PieceSelectorMenu : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        private bool _menuOpen = false;
+
         void Start()
         {
-            
+            MapEditorInputManager.Instance.menuAction.started += OnMenu;
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnMenu(InputAction.CallbackContext context)
         {
-            
+            _menuOpen = !_menuOpen;
+
+            if (_menuOpen)
+            {
+
+            }
+            else if (!_menuOpen)
+            {
+
+            }
         }
     }
 }

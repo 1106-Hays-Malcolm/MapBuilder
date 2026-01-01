@@ -584,6 +584,7 @@ GameObject:
   - component: {fileID: 2211776287198249375}
   - component: {fileID: 9094962852955985810}
   - component: {fileID: -6060203181998803941}
+  - component: {fileID: 7718240993672873834}
   m_Layer: 0
   m_Name: CreativePlayer
   m_TagString: MainCamera
@@ -636,7 +637,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingReachDistance: 10
   nonFloatingReachDistance: 100
-  cameraScript: {fileID: 0}
+--- !u!114 &7718240993672873834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4648446993521113266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25715aa74f47147d3b3551c9889c4a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5608300253913184763
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &952900051946159851
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1433,7 +1445,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5752451618844347167}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5656
+  m_Size: 0.5848
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

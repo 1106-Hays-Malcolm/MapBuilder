@@ -40,6 +40,7 @@ namespace MapBuilder
         private InputAction _placeModeAction;
         private InputAction _floatingPlaceModeAction;
         private InputAction _stackModeAction;
+        private InputAction _menuAction;
 
         public InputAction moveAction { get { return _moveAction; } }
         public InputAction lookAction { get { return _lookAction; } }
@@ -52,6 +53,7 @@ namespace MapBuilder
         public InputAction placeModeAction { get { return _placeModeAction; } }
         public InputAction floatingPlaceModeAction { get { return _floatingPlaceModeAction; } }
         public InputAction stackModeAction { get { return _stackModeAction; } }
+        public InputAction menuAction { get { return _menuAction; } }
 
         private void Awake()
         {
@@ -76,6 +78,7 @@ namespace MapBuilder
             _placeModeAction = _playerInput.currentActionMap.FindAction("PlaceMode");
             _floatingPlaceModeAction = _playerInput.currentActionMap.FindAction("FloatingPlaceMode");
             _stackModeAction = _playerInput.currentActionMap.FindAction("StackMode");
+            _menuAction = _playerInput.currentActionMap.FindAction("Menu");
 
             _playerInput.onActionTriggered += OnAction;
         }
