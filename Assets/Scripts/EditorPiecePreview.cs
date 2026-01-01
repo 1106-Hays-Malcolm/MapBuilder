@@ -13,7 +13,7 @@ namespace MapBuilder
         [SerializeField] private float nonFloatingReachDistance = 100f;
         private float gridUnitSize;
 
-        [SerializeField] private CreativePlayerCamera cameraScript;
+        private CreativePlayerCamera cameraScript;
         
         private bool alreadyRotated = false;
         private bool alreadyPlaced = false;
