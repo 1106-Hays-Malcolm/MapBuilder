@@ -15,6 +15,8 @@ namespace MapBuilder
         {
             saveStopwatch = System.Diagnostics.Stopwatch.StartNew();
 
+            map.SortPieces();
+
             string json = JsonUtility.ToJson(map, prettyPrint:true);
             StreamWriter fileWriter = new StreamWriter(mapStoragePath + fileName + fileExtension, append:false);
 
