@@ -32,6 +32,14 @@ namespace MapBuilder
             }
         }
 
+        public void SortPieces()
+        {
+            _pieces.Sort(delegate(MapPiece p1, MapPiece p2)
+            {
+                return p1.CompareTo(p2);
+            });
+        }
+
         public Map(float newGridUnitSize)
         {
             _gridUnitSize = newGridUnitSize;
