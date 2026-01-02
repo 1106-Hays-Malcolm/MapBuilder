@@ -22,6 +22,8 @@ namespace MapBuilder
         public void AddEntryToMenu(string name)
         {
             GameObject newEntry = Instantiate(pieceSelectionButtonPrefab);
+            newEntry.GetComponent<PieceSelectorButton>().prefabName = name;
+            newEntry.GetComponent<PieceSelectorButton>().previewScript = GetComponent<EditorPiecePreview>();
             GameObject nameObject = newEntry.transform.Find("Name").gameObject;
             nameObject.GetComponent<TMPro.TMP_Text>().text = name;
             newEntry.transform.SetParent(content.transform);
