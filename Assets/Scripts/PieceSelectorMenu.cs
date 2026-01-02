@@ -46,12 +46,12 @@ namespace MapBuilder
 
             if (_menuOpen)
             {
-                Cursor.lockState = CursorLockMode.Confined;
+                MapEditorInputManager.Instance.UnlockCursor();
                 canvasObject.GetComponent<Canvas>().enabled = true;
             }
             else if (!_menuOpen)
             {
-                Cursor.lockState = CursorLockMode.Locked;
+                MapEditorInputManager.Instance.LockCursor();
                 canvasObject.GetComponent<Canvas>().enabled = false;
             }
         }

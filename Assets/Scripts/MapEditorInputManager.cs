@@ -58,6 +58,8 @@ namespace MapBuilder
         public InputAction stackModeAction { get { return _stackModeAction; } }
         public InputAction menuAction { get { return _menuAction; } }
 
+        private bool _ignoreMouseMove = false;
+
         private void Awake()
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -86,6 +88,19 @@ namespace MapBuilder
             _playerInput.onActionTriggered += OnAction;
         }
 
+        public void LockCursor()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            _lookAction.Enable();
+            _ignoreMouseMove = true;
+        }
+
+        public void UnlockCursor()
+        {
+            _lookAction.Disable();
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+
         private void OnAction(InputAction.CallbackContext context)
         {
             if (context.action == _menuAction)
@@ -103,7 +118,13 @@ namespace MapBuilder
 
             if (context.action == _lookAction)
             {
-                _lookDirection = lookAction.ReadValue<Vector2>();
+                if (_ignoreMouseMove && context.performed)
+                {
+                    _ignoreMouseMove = false;
+                    _lookDirection = Vector2.zero;
+                }
+                else if (!_ignoreMouseMove)
+                    _lookDirection = lookAction.ReadValue<Vector2>();
             }
 
             if (context.action.inProgress)

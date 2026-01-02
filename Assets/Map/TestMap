@@ -9802,24 +9802,6 @@
             "_location": {
                 "x": -10,
                 "y": -1,
-                "z": -15
-            },
-            "_orientation": 0,
-            "_piece": {
-                "_prefabName": "floor",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "z": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
-                "x": -10,
-                "y": -1,
                 "z": -16
             },
             "_orientation": 0,
@@ -10073,24 +10055,6 @@
                 "x": -8,
                 "y": -1,
                 "z": -25
-            },
-            "_orientation": 0,
-            "_piece": {
-                "_prefabName": "floor",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "z": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
-                "x": -8,
-                "y": -1,
-                "z": -26
             },
             "_orientation": 0,
             "_piece": {
@@ -13168,24 +13132,6 @@
             "_location": {
                 "x": -7,
                 "y": -1,
-                "z": -24
-            },
-            "_orientation": 0,
-            "_piece": {
-                "_prefabName": "floor",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "z": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
-                "x": -7,
-                "y": -1,
                 "z": -22
             },
             "_orientation": 0,
@@ -13313,24 +13259,6 @@
                 "x": -9,
                 "y": -1,
                 "z": -22
-            },
-            "_orientation": 0,
-            "_piece": {
-                "_prefabName": "floor",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "z": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
-                "x": -9,
-                "y": -1,
-                "z": -23
             },
             "_orientation": 0,
             "_piece": {
@@ -14499,24 +14427,6 @@
         {
             "_location": {
                 "x": -5,
-                "y": -1,
-                "z": -24
-            },
-            "_orientation": 0,
-            "_piece": {
-                "_prefabName": "floor",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "z": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
-                "x": -9,
                 "y": -1,
                 "z": -24
             },
@@ -16499,24 +16409,6 @@
                 "x": -9,
                 "y": 12,
                 "z": 23
-            },
-            "_orientation": 0,
-            "_piece": {
-                "_prefabName": "floor",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "z": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
-                "x": -9,
-                "y": 12,
-                "z": 22
             },
             "_orientation": 0,
             "_piece": {
@@ -19005,6 +18897,564 @@
             "_orientation": 3,
             "_piece": {
                 "_prefabName": "wall",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -7,
+                "y": 12,
+                "z": 18
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -7,
+                "y": 12,
+                "z": 19
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -7,
+                "y": 12,
+                "z": 20
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -6,
+                "y": 12,
+                "z": 18
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "wall",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -6,
+                "y": 12,
+                "z": 19
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "wall",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -6,
+                "y": 12,
+                "z": 20
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "wall",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -17,
+                "y": 5,
+                "z": 24
+            },
+            "_orientation": 1,
+            "_piece": {
+                "_prefabName": "wall",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -11,
+                "y": 13,
+                "z": 17
+            },
+            "_orientation": 1,
+            "_piece": {
+                "_prefabName": "wall",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -10,
+                "y": 13,
+                "z": 17
+            },
+            "_orientation": 1,
+            "_piece": {
+                "_prefabName": "wall",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -9,
+                "y": 13,
+                "z": 17
+            },
+            "_orientation": 1,
+            "_piece": {
+                "_prefabName": "wall",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -8,
+                "y": 13,
+                "z": 17
+            },
+            "_orientation": 1,
+            "_piece": {
+                "_prefabName": "wall",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -9,
+                "y": 12,
+                "z": 22
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -9,
+                "y": -1,
+                "z": -23
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -9,
+                "y": -1,
+                "z": -24
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -8,
+                "y": -1,
+                "z": -26
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -7,
+                "y": -1,
+                "z": -24
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -9,
+                "y": -1,
+                "z": -36
+            },
+            "_orientation": 3,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -9,
+                "y": -1,
+                "z": -37
+            },
+            "_orientation": 3,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -9,
+                "y": -1,
+                "z": -38
+            },
+            "_orientation": 3,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -10,
+                "y": -1,
+                "z": -36
+            },
+            "_orientation": 3,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -10,
+                "y": -1,
+                "z": -37
+            },
+            "_orientation": 3,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -10,
+                "y": -1,
+                "z": -38
+            },
+            "_orientation": 3,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -11,
+                "y": -1,
+                "z": -36
+            },
+            "_orientation": 3,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -11,
+                "y": -1,
+                "z": -37
+            },
+            "_orientation": 3,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -2,
+                "y": -5,
+                "z": -43
+            },
+            "_orientation": 3,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -11,
+                "y": -1,
+                "z": -38
+            },
+            "_orientation": 3,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -9,
+                "y": -1,
+                "z": -39
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -10,
+                "y": -1,
+                "z": -39
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -2,
+                "y": -9,
+                "z": -36
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -1,
+                "y": -8,
+                "z": -40
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
+                "_occupiedSpaces": [
+                    {
+                        "x": 0,
+                        "y": 0,
+                        "z": 0
+                    }
+                ]
+            }
+        },
+        {
+            "_location": {
+                "x": -11,
+                "y": -1,
+                "z": -39
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor",
                 "_occupiedSpaces": [
                     {
                         "x": 0,
