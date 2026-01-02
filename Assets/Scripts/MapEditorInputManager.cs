@@ -8,6 +8,7 @@ namespace MapBuilder
         remove,
         place,
         floatingPlace,
+        forceFloatingPlace,
         stack,
     }
 
@@ -127,7 +128,7 @@ namespace MapBuilder
                     _lookDirection = lookAction.ReadValue<Vector2>();
             }
 
-            if (context.action.inProgress)
+            if (context.started)
             {
                 if (context.action == _removeModeAction)
                 {
@@ -139,7 +140,10 @@ namespace MapBuilder
                 }
                 else if (context.action == _floatingPlaceModeAction)
                 {
-                    _editMode = EditMode.floatingPlace;
+                    if (_editMode == EditMode.floatingPlace)
+                        _editMode = EditMode.forceFloatingPlace;
+                    else
+                        _editMode = EditMode.floatingPlace;
                 }
                 else if (context.action == _stackModeAction)
                 {

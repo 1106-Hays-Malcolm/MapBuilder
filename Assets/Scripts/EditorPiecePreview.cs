@@ -68,9 +68,11 @@ namespace MapBuilder
             bool canPlacePiece = false;
             bool canRemovePiece = false;
             bool hidePreviewOnMiss = false;
+            bool force = false;
             switch (MapEditorInputManager.Instance.editMode)
             {
                 case (EditMode.place):
+                    Debug.Log("Place");
                     currentReachDistance = nonFloatingReachDistance;
                     stack = false;
                     hidePreview = false;
@@ -79,13 +81,22 @@ namespace MapBuilder
                     break;
 
                 case (EditMode.floatingPlace):
+                    Debug.Log("Floating");
                     currentReachDistance = floatingReachDistance;
                     stack = false;
                     hidePreview = false;
                     canPlacePiece = true;
                     break;
 
+                case (EditMode.forceFloatingPlace):
+                    Debug.Log("Force floating");
+                    currentReachDistance = floatingReachDistance;
+                    force = true;
+                    canPlacePiece = true;
+                    break;
+
                 case (EditMode.stack):
+                    Debug.Log("Stack");
                     currentReachDistance = nonFloatingReachDistance;
                     stack = true;
                     hidePreview = false;
@@ -94,6 +105,7 @@ namespace MapBuilder
                     break;
 
                 case (EditMode.remove):
+                    Debug.Log("Remove");
                     currentReachDistance = nonFloatingReachDistance;
                     stack = true;
                     hidePreview = true;
@@ -107,6 +119,13 @@ namespace MapBuilder
                     stack:stack,
                     out colliderHit,
                     out targetedPieceObject);
+
+            if (force)
+            {
+                gridTargetPosition = GetGridPositionFromWorldPosition(
+                        cameraScript.playerCamera.transform.position +
+                        (currentReachDistance * cameraScript.playerCamera.transform.forward));
+            }
 
             if (!colliderHit && hidePreviewOnMiss)
             {
