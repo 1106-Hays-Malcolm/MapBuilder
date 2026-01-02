@@ -5706,6 +5706,72 @@
         },
         {
             "_location": {
+                "x": -9,
+                "y": 16,
+                "z": -10
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "ceiling"
+            }
+        },
+        {
+            "_location": {
+                "x": -9,
+                "y": 16,
+                "z": -9
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "ceiling"
+            }
+        },
+        {
+            "_location": {
+                "x": -8,
+                "y": 16,
+                "z": -10
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "ceiling"
+            }
+        },
+        {
+            "_location": {
+                "x": -7,
+                "y": 16,
+                "z": -10
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "ceiling"
+            }
+        },
+        {
+            "_location": {
+                "x": -8,
+                "y": 16,
+                "z": -9
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "ceiling"
+            }
+        },
+        {
+            "_location": {
+                "x": -7,
+                "y": 16,
+                "z": -9
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "ceiling"
+            }
+        },
+        {
+            "_location": {
                 "x": -6,
                 "y": 16,
                 "z": -10
@@ -5830,6 +5896,50 @@
                 "x": -1,
                 "y": 16,
                 "z": -9
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "ceiling"
+            }
+        },
+        {
+            "_location": {
+                "x": -7,
+                "y": 16,
+                "z": -8
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "ceiling"
+            }
+        },
+        {
+            "_location": {
+                "x": -6,
+                "y": 16,
+                "z": -8
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "ceiling"
+            }
+        },
+        {
+            "_location": {
+                "x": -5,
+                "y": 16,
+                "z": -8
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "ceiling"
+            }
+        },
+        {
+            "_location": {
+                "x": -4,
+                "y": 16,
+                "z": -8
             },
             "_orientation": 0,
             "_piece": {

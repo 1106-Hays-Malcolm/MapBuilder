@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace MapBuilder
 {
@@ -34,10 +35,14 @@ namespace MapBuilder
 
         public void SortPieces()
         {
-            _pieces.Sort(delegate(MapPiece p1, MapPiece p2)
-            {
-                return p1.CompareTo(p2);
-            });
+             IOrderedEnumerable<MapPiece> sortedPieces = _pieces.OrderBy(piece => piece.GetMortonCode());
+             List<MapPiece> sortedPiecesList = new List<MapPiece>();
+             foreach (MapPiece piece in sortedPieces)
+             {
+                 Debug.Log(piece.location);
+                 sortedPiecesList.Add(piece);
+             }
+             _pieces = sortedPiecesList;
         }
 
         public Map(float newGridUnitSize)
