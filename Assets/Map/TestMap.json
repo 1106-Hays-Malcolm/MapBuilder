@@ -4056,6 +4056,17 @@
         },
         {
             "_location": {
+                "x": -13,
+                "y": 10,
+                "z": -12
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor"
+            }
+        },
+        {
+            "_location": {
                 "x": -3,
                 "y": 8,
                 "z": -14
@@ -8863,6 +8874,28 @@
         },
         {
             "_location": {
+                "x": 5,
+                "y": -1,
+                "z": 11
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor"
+            }
+        },
+        {
+            "_location": {
+                "x": 12,
+                "y": -1,
+                "z": 12
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor"
+            }
+        },
+        {
+            "_location": {
                 "x": -16,
                 "y": 0,
                 "z": 3
@@ -13244,6 +13277,50 @@
                 "x": 18,
                 "y": 10,
                 "z": 15
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor"
+            }
+        },
+        {
+            "_location": {
+                "x": 6,
+                "y": 1,
+                "z": 20
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor"
+            }
+        },
+        {
+            "_location": {
+                "x": 9,
+                "y": 1,
+                "z": 19
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor"
+            }
+        },
+        {
+            "_location": {
+                "x": 15,
+                "y": 4,
+                "z": 20
+            },
+            "_orientation": 0,
+            "_piece": {
+                "_prefabName": "floor"
+            }
+        },
+        {
+            "_location": {
+                "x": 7,
+                "y": 8,
+                "z": 19
             },
             "_orientation": 0,
             "_piece": {

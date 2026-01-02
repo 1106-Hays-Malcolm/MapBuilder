@@ -59,8 +59,6 @@ namespace MapBuilder
 
         private void OnAssetsReady()
         {
-            var op = Addressables.LoadAssetAsync<GameObject>("MapPieceCollider");
-            GameObject mapPieceColliderPrefab = op.WaitForCompletion();
 
             foreach (var mapPiece in map.pieces)
             {
@@ -72,19 +70,18 @@ namespace MapBuilder
 
                 if (_editMode)
                 {
-                    GameObject mapPieceCollider = Instantiate(mapPieceColliderPrefab);
-                    mapPieceCollider.transform.parent = newPiece.transform;
 
-                    mapPieceCollider.transform.position = new Vector3(
+                    GameObject newCollider = new GameObject("Collider");
+                    newCollider.AddComponent<BoxCollider>();
+                    newCollider.transform.parent = newPiece.transform;
+                    newCollider.transform.position = new Vector3(
                             newPiece.transform.position.x,
-                            newPiece.transform.position.y + map.gridUnitSize / 2,
+                            newPiece.transform.position.y + map.gridUnitSize/2,
                             newPiece.transform.position.z);
-
-                    mapPieceCollider.GetComponent<BoxCollider>().size = new Vector3(map.gridUnitSize, map.gridUnitSize, map.gridUnitSize);
+                    newCollider.GetComponent<BoxCollider>().size = new Vector3(map.gridUnitSize, map.gridUnitSize, map.gridUnitSize);
                 }
             }
 
-            Addressables.Release(op);
 
             mapLoadStopwatch.Stop();
             Debug.Log($"Total map loading time: {mapLoadStopwatch.ElapsedMilliseconds}ms");
