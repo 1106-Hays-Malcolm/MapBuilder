@@ -39,7 +39,6 @@ namespace MapBuilder
              List<MapPiece> sortedPiecesList = new List<MapPiece>();
              foreach (MapPiece piece in sortedPieces)
              {
-                 Debug.Log(piece.location);
                  sortedPiecesList.Add(piece);
              }
              _pieces = sortedPiecesList;

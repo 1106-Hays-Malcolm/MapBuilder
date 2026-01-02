@@ -154,7 +154,7 @@ namespace MapBuilder
             if (MapEditorInputManager.Instance.placeAction.inProgress && !alreadyPlaced)
             {
                 alreadyPlaced = true;
-                if (canPlacePiece)
+                if (canPlacePiece && !hidePreview)
                 {
                     AddPiece(piece, pieceObject);
                 }

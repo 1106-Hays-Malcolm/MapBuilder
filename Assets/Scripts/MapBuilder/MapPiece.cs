@@ -35,16 +35,6 @@ namespace MapBuilder
             _piece = new Piece();
         }
 
-        public int CompareTo(MapPiece other)
-        {
-            if (this.GetMortonCode() < other.GetMortonCode())
-                return -1;
-            else if (this.GetMortonCode() > other.GetMortonCode())
-                return 1;
-            else
-                return 0;
-        }
-
         // GetMortonCode and SplitBy3Bits21 are from: https://github.com/fwilliams/point-cloud-utils/blob/master/src/common/morton_code.cpp#L72
         public ulong GetMortonCode()
         {
