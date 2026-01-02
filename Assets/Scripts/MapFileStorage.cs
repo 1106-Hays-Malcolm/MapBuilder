@@ -6,6 +6,7 @@ namespace MapBuilder
     public class MapFileStorage
     {
         private string mapStoragePath = "Assets/Map/";
+        private string fileExtension = ".json";
 
         private System.Diagnostics.Stopwatch loadStopwatch;
         private System.Diagnostics.Stopwatch saveStopwatch;
@@ -15,7 +16,7 @@ namespace MapBuilder
             saveStopwatch = System.Diagnostics.Stopwatch.StartNew();
 
             string json = JsonUtility.ToJson(map, prettyPrint:true);
-            StreamWriter fileWriter = new StreamWriter(mapStoragePath + fileName, append:false);
+            StreamWriter fileWriter = new StreamWriter(mapStoragePath + fileName + fileExtension, append:false);
 
             fileWriter.Write(json);
             fileWriter.Close();
@@ -28,7 +29,7 @@ namespace MapBuilder
         {
             loadStopwatch = System.Diagnostics.Stopwatch.StartNew();
 
-            StreamReader fileReader = new StreamReader(mapStoragePath + fileName);
+            StreamReader fileReader = new StreamReader(mapStoragePath + fileName + fileExtension);
             string json = fileReader.ReadToEnd();
             fileReader.Close();
 

@@ -10,6 +10,9 @@ namespace MapBuilder
 {
     public class MapInitializer : MonoBehaviour
     {
+        [SerializeField] private string mapName;
+        [SerializeField] private bool autoInitialize = false;
+
         private Map map;
 
         private Dictionary<string, AsyncOperationHandle<GameObject>> operationDictionary;
@@ -39,12 +42,19 @@ namespace MapBuilder
             this.Initialize(newMap, false);
         }
 
-        void Start()
+        void Awake()
         {
             if (Ready == null)
                 Ready = new UnityEvent();
 
             Ready.AddListener(OnAssetsReady);
+
+            if (autoInitialize)
+            {
+                MapFileStorage mapFileStorage = new MapFileStorage();
+                Map mapFromFile = mapFileStorage.ReadMapFromFile(mapName);
+                Initialize(mapFromFile);
+            }
         }
 
         private void OnAssetsReady()

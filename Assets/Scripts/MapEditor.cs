@@ -13,7 +13,8 @@ namespace MapBuilder
         private static MapEditor _instance;
         public static MapEditor Instance { get { return _instance; } }
 
-        private string _mapName;
+        [SerializeField] private string _mapName;
+
         private Map _map;
         public Map map { get => _map; }
 
@@ -46,6 +47,7 @@ namespace MapBuilder
         {
             Ready.AddListener(OnAssetsReady);
             StartCoroutine(LoadAndAssociateResultWithKey(_keys));
+            LoadMap(_mapName);
         }
 
         public void LoadMap(string mapName)
