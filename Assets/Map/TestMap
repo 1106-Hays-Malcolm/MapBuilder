@@ -19700,24 +19700,6 @@
         },
         {
             "_location": {
-                "x": -29,
-                "y": 21,
-                "z": 3
-            },
-            "_orientation": 2,
-            "_piece": {
-                "_prefabName": "wall",
-                "_occupiedSpaces": [
-                    {
-                        "x": 0,
-                        "y": 0,
-                        "z": 0
-                    }
-                ]
-            }
-        },
-        {
-            "_location": {
                 "x": -25,
                 "y": 29,
                 "z": -5

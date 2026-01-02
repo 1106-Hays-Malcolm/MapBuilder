@@ -20,6 +20,7 @@ namespace MapBuilder
 
         private EditMode _editMode;
         public EditMode editMode { get { return _editMode; } }
+        private EditMode _previousEditMode;
 
         private static MapEditorInputManager _instance;
         public static MapEditorInputManager Instance { get { return _instance; } }
@@ -128,11 +129,19 @@ namespace MapBuilder
                     _lookDirection = lookAction.ReadValue<Vector2>();
             }
 
-            if (context.started)
+            if (context.started && (
+                    context.action == _removeModeAction ||
+                    context.action == _placeModeAction ||
+                    context.action == _floatingPlaceModeAction ||
+                    context.action == _stackModeAction))
             {
+                EditMode newPreviousEditMode = _editMode;
                 if (context.action == _removeModeAction)
                 {
-                    _editMode = EditMode.remove;
+                    if (_editMode == EditMode.remove)
+                        _editMode = _previousEditMode;
+                    else
+                        _editMode = EditMode.remove;
                 }
                 else if (context.action == _placeModeAction)
                 {
@@ -149,6 +158,7 @@ namespace MapBuilder
                 {
                     _editMode = EditMode.stack;
                 }
+                _previousEditMode = newPreviousEditMode;
             }
         }
     }
