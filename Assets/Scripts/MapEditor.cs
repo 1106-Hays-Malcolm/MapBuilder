@@ -76,15 +76,6 @@ namespace MapBuilder
             _assetsLoaded = true;
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            if (_assetsLoaded)
-            {
-
-            }
-        }
-
         // From: https://docs.unity3d.com/Packages/com.unity.addressables@1.19/manual/LoadingAddressableAssets.html#correlating-loaded-assets-to-their-keys
         IEnumerator LoadAndAssociateResultWithKey(IList<string> keys) {
             if (operationDictionary == null)
